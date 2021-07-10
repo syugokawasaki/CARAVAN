@@ -14,7 +14,7 @@ class BlogsController < ApplicationController
   def create
     blog = Blog.new(blog_params)
     blog.save
-    redirect_to blogs_path(blog,id)
+    redirect_to blogs_path
 
   end
 
@@ -29,6 +29,9 @@ class BlogsController < ApplicationController
   end
 
   def destroy
+    blog = Blog.find(params[:id])
+    blog.destroy
+    redirect_to blogs_path
   end
 
   private
